@@ -1,13 +1,14 @@
-from fastapi import FastAPI
 from fastapi.responses import ORJSONResponse
+from fastapi import FastAPI
 from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
 from starlette.middleware.cors import CORSMiddleware
 
-import app
 import app.domain
+import app
+
 from app.api import endpoints, exception_handlers
-from app.config import Settings
 from app.containers import Container
+from app.config import Settings
 
 
 def create_fastapi_app(project_name: str, version: str, description: str) -> FastAPI:

@@ -1,12 +1,12 @@
 import functools
-from typing import Any, Callable, Coroutine
 
-from fastapi import Request
-from pydantic import BaseModel
 from starlette.responses import JSONResponse
+from typing import Any, Callable, Coroutine
+from pydantic import BaseModel
+from fastapi import Request
 
-from app.api.schemas import SimpleApiError
 from app.domain.common import enums, exceptions
+from app.api.schemas import SimpleApiError
 
 
 async def universal_exception_handler(request: Request, exc: Exception) -> JSONResponse:
@@ -18,7 +18,7 @@ async def universal_exception_handler(request: Request, exc: Exception) -> JSONR
 
 
 def typed_exception_handler(
-    exc_type: type[BaseModel],
+        exc_type: type[BaseModel],
 ) -> Callable[[Request, exceptions.GenericApiError], Coroutine[Any, Any, JSONResponse]]:
     async def exception_handler(_: Request, exc: exceptions.GenericApiError) -> JSONResponse:
         response_content = exc_type.model_validate(exc).model_dump()

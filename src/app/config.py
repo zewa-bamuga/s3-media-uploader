@@ -1,9 +1,9 @@
 import secrets
-from typing import Any
 
-from passlib.context import CryptContext
-from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import Field, field_validator
+from passlib.context import CryptContext
+from typing import Any
 
 
 class ApiSettings(BaseSettings):

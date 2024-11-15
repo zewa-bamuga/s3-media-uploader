@@ -1,9 +1,9 @@
-import asyncio
 import functools
+import asyncio
+import typer
+
 from collections.abc import Callable
 from typing import Any
-
-import typer
 
 import app.domain
 from app.containers import Container
@@ -36,4 +36,3 @@ typer_app = typer.Typer()
 @async_to_sync
 async def noop() -> None:
     pass
-

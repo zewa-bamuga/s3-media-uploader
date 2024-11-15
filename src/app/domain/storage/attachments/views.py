@@ -1,22 +1,22 @@
+from fastapi import APIRouter, Depends, UploadFile
+from dependency_injector import wiring
 from uuid import UUID
 
-from dependency_injector import wiring
-from fastapi import APIRouter, Depends, UploadFile
+from a8t_tools.db import pagination, sorting
 
-from app.api import deps
-from app.containers import Container
-from app.domain.storage.attachments import schemas
-from app.domain.storage.attachments.commands import AttachmentCreateCommand
 from app.domain.storage.attachments.queries import (
     AttachmentListQuery,
     AttachmentRetrieveQuery,
 )
-from a8t_tools.db import pagination, sorting
+from app.domain.storage.attachments.commands import AttachmentCreateCommand
+from app.domain.storage.attachments import schemas
+from app.containers import Container
+from app.api import deps
 
 router = APIRouter()
 
 
-@router.post("/create", response_model=schemas.Attachment)
+@router.post("/create", response_model=schemas.AttachmentAnswer)
 @wiring.inject
 async def create_attachment(
         attachment: UploadFile,
