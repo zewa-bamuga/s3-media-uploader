@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "s3-media-uploader"
-version = "0.0.1"
+version = "0.0.6"
 description = "A microservice for uploading and managing media files (photos, videos, audio) using FastAPI and S3 storage."
 authors = ["zewa-bamuga <tikhonov.igor2028@yandex.ru>"]
 readme = "README.md"
