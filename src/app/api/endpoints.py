@@ -1,7 +1,8 @@
 from fastapi import APIRouter, status
 
-from app.api import schemas
 import app.domain.storage.attachments.views
+
+from app.api import schemas
 
 storage_router = APIRouter(prefix="/storage")
 storage_router.include_router(
