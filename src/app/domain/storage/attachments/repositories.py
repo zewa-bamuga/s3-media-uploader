@@ -1,13 +1,13 @@
+from sqlalchemy import select, insert
 from uuid import UUID
 
 from a8t_tools.db.pagination import PaginationCallable, Paginated, NoPaginationResults
 from a8t_tools.db.sorting import SortingData, apply_sorting
 from a8t_tools.db.transactions import AsyncDbTransaction
-from sqlalchemy import select, insert
 
-from app.domain.common import models
-from app.domain.common.schemas import IdContainer
 from app.domain.storage.attachments import schemas
+from app.domain.common.schemas import IdContainer
+from app.domain.common import models
 
 
 class AttachmentRepository:
@@ -15,9 +15,9 @@ class AttachmentRepository:
         self.transaction = transaction
 
     async def get_attachments(
-        self,
-        pagination: PaginationCallable[schemas.Attachment] | None = None,
-        sorting: SortingData[schemas.AttachmentSorts] | None = None,
+            self,
+            pagination: PaginationCallable[schemas.Attachment] | None = None,
+            sorting: SortingData[schemas.AttachmentSorts] | None = None,
     ) -> Paginated[schemas.Attachment]:
         query = apply_sorting(select(models.Attachment), sorting)
 

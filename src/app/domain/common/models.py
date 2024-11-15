@@ -2,9 +2,10 @@ import datetime
 import uuid
 
 import sqlalchemy as sa
-from sqlalchemy import orm
+
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
+from sqlalchemy import orm
 
 
 @orm.as_declarative()

@@ -1,20 +1,21 @@
 import logging
+
+from dependency_injector import containers, providers
 from celery import Celery
 
-from a8t_tools.bus.consumer import setup_consumers
-from a8t_tools.bus.producer import TaskProducer
-from a8t_tools.bus.scheduler import setup_schedule
-from dependency_injector import containers, providers
-from a8t_tools.db.transactions import AsyncDbTransaction
-from a8t_tools.db.utils import UnitOfWork
-from a8t_tools.storage.facade import FileStorage
 from a8t_tools.storage.local_storage import LocalStorageBackend
 from a8t_tools.storage.s3_storage import S3StorageBackend
+from a8t_tools.db.transactions import AsyncDbTransaction
+from a8t_tools.bus.consumer import setup_consumers
+from a8t_tools.bus.scheduler import setup_schedule
 from a8t_tools.logging.utils import setup_logging
+from a8t_tools.storage.facade import FileStorage
+from a8t_tools.bus.producer import TaskProducer
 from a8t_tools.bus.celery import CeleryBackend
+from a8t_tools.db.utils import UnitOfWork
 
-from app.config import Settings
 from app.domain.storage.attachments.containers import AttachmentContainer
+from app.config import Settings
 
 
 class Container(containers.DeclarativeContainer):

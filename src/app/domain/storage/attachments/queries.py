@@ -2,9 +2,9 @@ from uuid import UUID
 
 from a8t_tools.db.pagination import Paginated
 
+from app.domain.storage.attachments.repositories import AttachmentRepository
 from app.domain.common.exceptions import NotFoundError
 from app.domain.storage.attachments import schemas
-from app.domain.storage.attachments.repositories import AttachmentRepository
 
 
 class AttachmentListQuery:

@@ -1,5 +1,5 @@
-from app.domain.common import enums
 from app.domain.common.schemas import APIModel
+from app.domain.common import enums
 
 
 class SimpleApiError(APIModel):
